@@ -1,0 +1,127 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-ast
+      - id: check-case-conflict
+      # - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: name-tests-test
+        args: ['--django']
+        exclude: |
+          (?x)^(
+            api/tests/common.py|
+            community/tests/common.py|
+          )$
+      - id: trailing-whitespace
+
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v2.2.0
+    hooks:
+      - id: seed-isort-config
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.4
+    hooks:
+      - id: bandit
+        args: ['-iii', '-ll']
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        # additional_dependencies:
+        #   - flake8-bugbear
+        #   - flake8-comprehensions
+        #   - flake8-mutable
+        #   - flake8-print
+        #   - flake8-simplify
+
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+
+  # - repo: https://github.com/pycqa/pylint
+  #   rev: v2.16.2
+  #   hooks:
+  #     - id: pylint
+  #       exclude: '[a-zA-Z]*/(migrations)/(.)*'
+  #       args: ['--load-plugins=pylint_django']
+  #       additional_dependencies:
+  #         - pylint_django
+  #         - djangorestframework-stubs
+  #         - django-stubs
+  #         - django_extensions
+  #         - django-filter
+  #         - djangorestframework
+  #         - djangorestframework-simplejwt
+  #         - dj-rest-auth
+  #         - django-allauth
+  #         - django-storages
+  #         - django-cors-headers
+  #         - django-rest-passwordreset
+  #         - drf-spectacular
+  #         - drf-spectacular-sidecar
+  #         - django-hosts
+  #         - django-celery-beat
+  #         - django-celery-results
+  #         - boto3
+  #         - pandas
+  #         - openpyxl
+  #         - django-ses
+  #         - python-decouple
+  #         - dj-database-url
+  #         - fcm-django
+  #         - psycopg2
+  #         - celery
+  #         - types-python-dateutil
+  #         - types-requests
+  #         - types-six
+
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.0.1
+  #   hooks:
+  #     - id: mypy
+  #       args: [--no-strict-optional, --ignore-missing-imports]
+  #       additional_dependencies:
+  #         - djangorestframework-stubs
+  #         - django-stubs
+  #         - django_extensions
+  #         - django-filter
+  #         - djangorestframework
+  #         - djangorestframework-simplejwt
+  #         - dj-rest-auth
+  #         - django-allauth
+  #         - django-storages
+  #         - django-cors-headers
+  #         - django-rest-passwordreset
+  #         - drf-spectacular
+  #         - drf-spectacular-sidecar
+  #         - django-hosts
+  #         - django-celery-beat
+  #         - django-celery-results
+  #         - boto3
+  #         - pandas
+  #         - openpyxl
+  #         - django-ses
+  #         - python-decouple
+  #         - dj-database-url
+  #         - fcm-django
+  #         - psycopg2
+  #         - celery
+  #         - types-python-dateutil
+  #         - types-requests
+  #         - types-six
