@@ -51,6 +51,16 @@ def generate_graphs(data: pd.DataFrame, data_type: str = "sales") -> list[str]:
         ax.set_xlabel("Região")
         ax.set_ylabel("Ticket médio")
 
+        # * Average profit per region
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.bar(
+            [r["name"] for r in data["region_sales"]],
+            [r["average_profit"] for r in data["region_sales"]],
+        )
+        ax.set_title("Lucro médio por região")
+        ax.set_xlabel("Região")
+        ax.set_ylabel("Lucro médio")
+
         # * Save all graphs and combine them into a single PDF file
         figs = [plt.figure(n) for n in plt.get_fignums()]
         [fig.savefig(f"./graphs/{n}.png") for n, fig in enumerate(figs)]

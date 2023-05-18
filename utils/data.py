@@ -14,6 +14,7 @@ def process_sales_data(file_path: str) -> dict:
     average_ticket = df["Sales"].mean().round(2)
     regions = df["Region"].unique()
     region_sales = []
+
     for region in regions:
         r = {}
         r["name"] = region
@@ -31,7 +32,11 @@ def process_sales_data(file_path: str) -> dict:
         r["most_sold_category"] = (
             df[df["Region"] == region]["Category"].value_counts().index[0]
         )
+
+        r["average_profit"] = df[df["Region"] == region]["Profit"].mean().round(2)
+
         region_sales.append(r)
+
     return {"average_ticket": average_ticket, "region_sales": region_sales}
 
 
